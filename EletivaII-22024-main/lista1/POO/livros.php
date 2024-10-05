@@ -1,44 +1,48 @@
 <?php
-
 class Livro {
-
     private $titulo;
     private $autor;
     private $ano;
 
-    public function __construct($titulo, $autor, $ano){
+
+    public function __construct($titulo, $autor, $ano) {
         $this->titulo = $titulo;
         $this->autor = $autor;
         $this->setAno($ano);
     }
 
-    public function setTitulo($titulo){
+    public function setTitulo($titulo) {
         $this->titulo = $titulo;
     }
 
-    public function getTitulo(){
+    public function getTitulo() {
         return $this->titulo;
     }
 
-    public function setAutor($autor){
+    public function setAutor($autor) {
         $this->autor = $autor;
     }
 
-    public function getAutor(){
+    public function getAutor() {
         return $this->autor;
     }
 
-    public function setAno($ano){
-        if ($ano < 1900)
+    public function setAno($ano) {
+        if ($ano < 1900) {
             $ano = 1900;
+        }
+
         $this->ano = $ano;
+        
     }
 
-    public function getAno(){
+    public function getAno() {
         return $this->ano;
     }
 
 }
 
-$obj = new Livro("O Livro", "Ana", 1850);
-var_dump($obj);//exibe a estrutura do objeto
+
+
+$obj = new Livro("O Senhor dos Anéis", "J. R. R. Tolkien", 1970);
+var_dump($obj);

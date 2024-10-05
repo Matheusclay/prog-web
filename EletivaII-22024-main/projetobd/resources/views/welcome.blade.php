@@ -30,7 +30,7 @@
     <div class="col-md-4">
         <div class="card shadow-lg">
             <div class="card-body">
-                <h5 class="card-title text-center">Sistema de Controle de Estoque</h5>
+                <h5 class="card-title text-center">Sistema Gerenciamento de Hoteis</h5>
                 @auth
                     <a href="/dashboard" class="btn btn-primary">
                         Acessar área restrita
