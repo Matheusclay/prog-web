@@ -2,13 +2,14 @@
 
     <h5>Excluir Categoria</h5>
 
-    <form action="/categoria/" method="POST">
+    <form action="/categoria/{{$categoria->id}}" method="POST">
         @CSRF
         @method('DELETE')
         <div class="row">
             <div class="col">
                 <label for="nome" class="form-label">Informe a categoria:</label>
                 <input type="text" name="nome" class="form-control" disabled/>
+                    value="{{ $categoria->nome }}"/>
             </div>
         </div>
         <div class="row">

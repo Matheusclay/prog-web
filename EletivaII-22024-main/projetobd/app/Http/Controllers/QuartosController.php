@@ -18,6 +18,27 @@ class QuartosController extends Controller
         return view("quartos.create");
     }
 
+    public function edit($id)
+    {
+        $quarto = quartos::findOrFail($id);
+        return view("quartos.edit", compact('quarto'));
+    }
+
+    public function update(Request $request, $id)
+{
+    $quarto = quartos::findOrFail($id);
+
+    // Atualizando os campos do quarto
+    $quarto->numero = $request->numero;
+    $quarto->andar = $request->andar;
+    $quarto->descricao = $request->descricao;
+
+    $quarto->save();
+
+    return redirect('/quarto')->with('success', 'Quarto atualizado com sucesso!');
+}
+
+
     public function store(Request $request)
     {
         quartos::create($request->all());
