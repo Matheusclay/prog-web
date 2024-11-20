@@ -10,8 +10,9 @@
         <thead>
             <tr>
                 <th>Número do quarto</th>
-                <th>Andar </th>
+                <th>Andar</th>
                 <th>Descrição</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -23,7 +24,12 @@
                 
                 <td>
                     <a href="/quarto/{{ $q->id }}/edit" class="btn btn-warning">Alterar</a>
-                    <a href="/quarto/{{ $q->id }}" class="btn btn-danger">Excluir</a>
+
+                    <form action="/quarto/{{ $q->id }}" method="POST" style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir este quarto?')">Excluir</button>
+                    </form>
                 </td>
             </tr>
             @endforeach

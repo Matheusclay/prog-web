@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('quarto', QuartosController::class);
     Route::get('/quarto/{id}/edit', [QuartosController::class, 'edit']);
     Route::put('/quarto/{id}', [QuartosController::class, 'update']);
+    Route::delete('/quarto/{id}', [QuartosController::class, 'destroy']);
 
     
 

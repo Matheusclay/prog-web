@@ -25,10 +25,10 @@ class QuartosController extends Controller
     }
 
     public function update(Request $request, $id)
-{
+    {
     $quarto = quartos::findOrFail($id);
 
-    // Atualizando os campos do quarto
+    // Atualizando os campos do quarto com os novos valores
     $quarto->numero = $request->numero;
     $quarto->andar = $request->andar;
     $quarto->descricao = $request->descricao;
@@ -36,8 +36,14 @@ class QuartosController extends Controller
     $quarto->save();
 
     return redirect('/quarto')->with('success', 'Quarto atualizado com sucesso!');
-}
+    }
 
+    public function destroy($id)
+    {
+        $quarto = quartos::findOrFail($id);
+        $quarto->delete();
+        return redirect('/quarto')->with('success', 'Quarto deletado com sucesso!');
+    }
 
     public function store(Request $request)
     {
