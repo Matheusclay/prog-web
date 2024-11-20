@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\QuartosController;
+use App\Http\Controllers\ReservaController;
 
 
 
@@ -24,6 +25,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/quarto/{id}/edit', [QuartosController::class, 'edit']);
     Route::put('/quarto/{id}', [QuartosController::class, 'update']);
     Route::delete('/quarto/{id}', [QuartosController::class, 'destroy']);
+    Route::resource('/reserva', ReservaController::class);
+    Route::get('/reserva/{id}/edit', [ReservaController::class, 'edit'])->name('reserva.edit');
+    Route::put('/reserva/{id}', [ReservaController::class, 'update'])->name('reserva.update');
+    Route::delete('/reserva/{id}', [ReservaController::class, 'destroy'])->name('reserva.destroy');
 
     
 

@@ -44,6 +44,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/quarto">Quartos</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/reserva">Reservas</a>
+                </li>
 
             </ul>
             <ul class="navbar-nav ms-auto">
@@ -73,7 +76,7 @@
 
 <footer>
     <div class="container">
-        <p>&copy; 2024 Sistema de Gerenciamento de Hoteis. Todos os direitos reservados.</p>
+        <p>&copy; 2024 Sistema de Gerenciamento de Hoteis. Todos os direitos reservados. Matheus Henrique</p>
     </div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

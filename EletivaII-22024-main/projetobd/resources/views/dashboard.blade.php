@@ -11,6 +11,7 @@
         <h5 class="card-title">Quarto Centro de prudente</h5>
         <p class="card-text">Quarto extremamente bem localizado no centro de pp city.</p>
         <a href="/quarto" class="btn btn-primary">Cadastrar Quarto</a>
+        <a href="/reserva" class="btn btn-primary">Realizar Reserva</a>
       </div>
     </div>
   </div>
@@ -21,6 +22,7 @@
         <h5 class="card-title">Quarto perto da fatec</h5>
         <p class="card-text">Quarto extremamente bem localizado proximo a faculdade em pp city.</p>
         <a href="/quarto" class="btn btn-primary">Cadastrar Quarto</a>
+        <a href="/reserva" class="btn btn-primary">Realizar Reserva</a>
       </div>
     </div>
   </div>
@@ -31,6 +33,7 @@
         <h5 class="card-title">Quarto longe da fatec</h5>
         <p class="card-text">Quarto proximo ao Ana Jacinta</p>
         <a href="/quarto" class="btn btn-primary">Cadastrar Quarto</a>
+        <a href="/reserva" class="btn btn-primary">Realizar Reserva</a>
       </div>
     </div>
   </div>
@@ -41,6 +44,7 @@
         <h5 class="card-title">Quarto na exposição</h5>
         <p class="card-text">Quarto Longe.</p>
         <a href="/quarto" class="btn btn-primary">Cadastrar Quarto</a>
+        <a href="/reserva" class="btn btn-primary">Realizar Reserva</a>
       </div>
     </div>
   </div>
