@@ -10,19 +10,19 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up()
-    {
+{
     Schema::create('reservas', function (Blueprint $table) {
         $table->id();
-        $table->unsignedBigInteger('quarto_id'); 
-        $table->string('nome_hospede'); 
-        $table->date('data_entrada'); 
-        $table->date('data_saida'); 
+        $table->unsignedBigInteger('hospede_id'); // Relaciona com hóspedes
+        $table->date('data_inicio'); // Data de início da reserva
+        $table->date('data_fim'); // Data de término da reserva
         $table->timestamps();
 
-        // Chave estrangeira
-        $table->foreign('quarto_id')->references('id')->on('quartos')->onDelete('cascade');
+        // Define a chave estrangeira
+        $table->foreign('hospede_id')->references('id')->on('hospedes')->onDelete('cascade');
     });
-    }
+}
+
 
 
     /**

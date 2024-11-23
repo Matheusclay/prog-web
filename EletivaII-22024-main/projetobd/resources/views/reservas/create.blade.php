@@ -1,33 +1,30 @@
 <x-app-layout>
-    <h5 class="mt-3">Criar Reserva</h5>
+    <h5>{{ isset($reserva) ? 'Editar Reserva' : 'Nova Reserva' }}</h5>
 
-    <form action="/reserva" method="POST">
+    <form action="{{ isset($reserva) ? route('reservas.update', $reserva->id) : route('reservas.store') }}" method="POST">
         @csrf
-        <div class="row">
-            <div class="col">
-                <label for="quarto_id" class="form-label">Selecione o Quarto:</label>
-                <select name="quarto_id" class="form-control">
-                    @foreach($quartos as $quarto)
-                    <option value="{{ $quarto->id }}">Quarto {{ $quarto->numero }}</option>
-                    @endforeach
-                </select>
-            </div>
+        @if(isset($reserva))
+            @method('PUT')
+        @endif
 
-            <div class="col">
-                <label for="nome_hospede" class="form-label">Nome do Hóspede:</label>
-                <input type="text" name="nome_hospede" class="form-control" required />
-            </div>
-
-            <div class="col">
-                <label for="data_entrada" class="form-label">Data de Entrada:</label>
-                <input type="date" name="data_entrada" class="form-control" required />
-            </div>
-
-            <div class="col">
-                <label for="data_saida" class="form-label">Data de Saída:</label>
-                <input type="date" name="data_saida" class="form-control" required />
-            </div>
+        <div class="mb-3">
+            <label for="hospede_id" class="form-label">Hóspede</label>
+            <select name="hospede_id" class="form-control">
+                @foreach($hospedes as $hospede)
+                <option value="{{ $hospede->id }}" {{ isset($reserva) && $reserva->hospede_id == $hospede->id ? 'selected' : '' }}>
+                    {{ $hospede->nome }}
+                </option>
+                @endforeach
+            </select>
         </div>
-        <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+        <div class="mb-3">
+            <label for="data_inicio" class="form-label">Data de Início</label>
+            <input type="date" name="data_inicio" class="form-control" value="{{ $reserva->data_inicio ?? '' }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="data_fim" class="form-label">Data de Fim</label>
+            <input type="date" name="data_fim" class="form-control" value="{{ $reserva->data_fim ?? '' }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
     </form>
 </x-app-layout>

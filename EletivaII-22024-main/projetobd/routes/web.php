@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\QuartosController;
 use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HospedeController;
 
 
 
@@ -25,13 +27,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/quarto/{id}/edit', [QuartosController::class, 'edit']);
     Route::put('/quarto/{id}', [QuartosController::class, 'update']);
     Route::delete('/quarto/{id}', [QuartosController::class, 'destroy']);
-    Route::resource('/reserva', ReservaController::class);
-    Route::get('/reserva/{id}/edit', [ReservaController::class, 'edit'])->name('reserva.edit');
-    Route::put('/reserva/{id}', [ReservaController::class, 'update'])->name('reserva.update');
-    Route::delete('/reserva/{id}', [ReservaController::class, 'destroy'])->name('reserva.destroy');
+    Route::get('/grafico-ocupacao', [DashboardController::class, 'ocupacao'])->name('grafico.ocupacao');
+    Route::resource('hospedes', HospedeController::class);
+    Route::resource('reservas', ReservaController::class);  
+
 
     
-
 });
 
 require __DIR__.'/auth.php';

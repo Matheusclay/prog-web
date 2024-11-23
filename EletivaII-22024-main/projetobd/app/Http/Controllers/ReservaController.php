@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Quarto;
+use App\Models\Hospede;
 use App\Models\Reserva;
 use Illuminate\Http\Request;
 
@@ -12,38 +12,39 @@ class ReservaController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-    $reservas = Reserva::with('quarto')->get();
+{
+    $reservas = Reserva::with('hospede')->get(); 
     return view('reservas.index', compact('reservas'));
-    }
+}
 
 
     /**
      * Show the form for creating a new resource.
      */
 
-    public function create()
-    {
-    $quartos = Quarto::all(); // Lista de quartos disponíveis
-    return view('reservas.create', compact('quartos'));
-    }
+     public function create()
+     {
+         $hospedes = Hospede::all(); // Lista de hóspedes para seleção
+         return view('reservas.create', compact('hospedes'));
+     }
+     
 
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+{
     $request->validate([
-        'quarto_id' => 'required|exists:quartos,id',
-        'nome_hospede' => 'required|string|max:255',
-        'data_entrada' => 'required|date',
-        'data_saida' => 'required|date|after_or_equal:data_entrada',
+        'hospede_id' => 'required|exists:hospedes,id',
+        'data_inicio' => 'required|date',
+        'data_fim' => 'required|date|after_or_equal:data_inicio',
     ]);
 
     Reserva::create($request->all());
-    return redirect('/reserva')->with('success', 'Reserva criada com sucesso!');
-    }
+    return redirect()->route('reservas.index')->with('success', 'Reserva criada com sucesso!');
+}
+
 
 
     /**
@@ -58,11 +59,12 @@ class ReservaController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit($id)
-    {
-        $reserva = Reserva::findOrFail($id); // Busca a reserva pelo ID
-        $quartos = Quarto::all(); // Lista de quartos disponíveis
-        return view('reservas.edit', compact('reserva', 'quartos'));
-    }
+{
+    $reserva = Reserva::findOrFail($id);
+    $hospedes = Hospede::all(); // Lista de hóspedes para edição
+    return view('reservas.edit', compact('reserva', 'hospedes'));
+}
+
     
 
     /**
@@ -70,27 +72,28 @@ class ReservaController extends Controller
      */
     public function update(Request $request, $id)
     {
+    $reserva = Reserva::findOrFail($id);
+
     $request->validate([
-        'quarto_id' => 'required|exists:quartos,id',
-        'nome_hospede' => 'required|string|max:255',
-        'data_entrada' => 'required|date',
-        'data_saida' => 'required|date|after_or_equal:data_entrada',
+        'hospede_id' => 'required|exists:hospedes,id',
+        'data_inicio' => 'required|date',
+        'data_fim' => 'required|date|after_or_equal:data_inicio',
     ]);
 
-    $reserva = Reserva::findOrFail($id);
-    $reserva->update($request->all()); // Atualiza os dados
-    return redirect('/reserva')->with('success', 'Reserva atualizada com sucesso!');
+    $reserva->update($request->all());
+    return redirect()->route('reservas.index')->with('success', 'Reserva atualizada com sucesso!');
     }
+
 
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy($id)
-    {   
+{
     $reserva = Reserva::findOrFail($id);
-    $reserva->delete(); // Exclui a reserva
-    return redirect('/reserva')->with('success', 'Reserva excluída com sucesso!');
-    }
+    $reserva->delete();
+    return redirect()->route('reservas.index')->with('success', 'Reserva excluída com sucesso!');
+}
 
 }

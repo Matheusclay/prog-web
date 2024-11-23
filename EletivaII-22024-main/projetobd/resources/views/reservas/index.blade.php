@@ -1,33 +1,29 @@
 <x-app-layout>
-    <h5 class="mt-3">Gerenciar Reservas</h5>
+    <h5>Lista de Reservas</h5>
 
-    <a class="btn btn-success" href="/reserva/create">
-        Criar nova Reserva
-    </a>
+    <a href="{{ route('reservas.create') }}" class="btn btn-success">Nova Reserva</a>
 
-    <table class="table table-hover">
+    <table class="table">
         <thead>
             <tr>
-                <th>Quarto</th>
                 <th>Hóspede</th>
-                <th>Entrada</th>
-                <th>Saída</th>
+                <th>Data de Início</th>
+                <th>Data de Fim</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
             @foreach($reservas as $reserva)
             <tr>
-                <td>{{ $reserva->quarto->numero }}</td>
-                <td>{{ $reserva->nome_hospede }}</td>
-                <td>{{ $reserva->data_entrada }}</td>
-                <td>{{ $reserva->data_saida }}</td>
+                <td>{{ $reserva->hospede->nome }}</td>
+                <td>{{ $reserva->data_inicio }}</td>
+                <td>{{ $reserva->data_fim }}</td>
                 <td>
-                    <a href="/reserva/{{ $reserva->id }}/edit" class="btn btn-warning">Alterar</a>
-                    <form action="/reserva/{{ $reserva->id }}" method="POST" style="display: inline;">
+                    <a href="{{ route('reservas.edit', $reserva->id) }}" class="btn btn-warning">Editar</a>
+                    <form action="{{ route('reservas.destroy', $reserva->id) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger" onclick="return confirm('Deseja excluir esta reserva?')">Excluir</button>
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza?')">Excluir</button>
                     </form>
                 </td>
             </tr>

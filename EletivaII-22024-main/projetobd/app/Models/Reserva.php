@@ -9,11 +9,13 @@ class Reserva extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['quarto_id', 'nome_hospede', 'data_entrada', 'data_saida'];
+    protected $fillable = ['hospede_id', 'data_inicio', 'data_fim'];
 
-    public function quarto()
+    // Relacionamento com Hospede
+    public function hospede()
     {
-        return $this->belongsTo(Quarto::class);
+        return $this->belongsTo(Hospede::class);
     }
 }
+
 

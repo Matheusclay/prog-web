@@ -47,7 +47,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/reserva">Reservas</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="/hospedes">Hospedes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/ocupacao">Gráficos</a>
+                </li>
             </ul>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown">
