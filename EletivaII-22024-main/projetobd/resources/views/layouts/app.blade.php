@@ -45,13 +45,15 @@
                     <a class="nav-link" href="/quarto">Quartos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/reserva">Reservas</a>
+                    <a class="nav-link" href="/reservas">Reservas</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/hospedes">Hospedes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/ocupacao">Gráficos</a>
+                    <a class="nav-link" href="/estadias">Estadias</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="/ocupacao">Gráfico</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">

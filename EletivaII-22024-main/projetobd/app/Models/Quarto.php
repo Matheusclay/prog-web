@@ -12,7 +12,11 @@ class Quarto extends Model
 
     public function reservas()
     {
-    return $this->hasMany(Reserva::class);
+        return $this->hasMany(Reserva::class);
+    }
+    public function estadias()
+    {
+        return $this->hasMany(Estadia::class);
     }
 
 }

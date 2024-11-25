@@ -4,9 +4,11 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\QuartosController;
-use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HospedeController;
+use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\EstadiaController;
+use App\Http\Controllers\GraficoController;
 
 
 
@@ -29,10 +31,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/quarto/{id}', [QuartosController::class, 'destroy']);
     Route::get('/grafico-ocupacao', [DashboardController::class, 'ocupacao'])->name('grafico.ocupacao');
     Route::resource('hospedes', HospedeController::class);
-    Route::resource('reservas', ReservaController::class);  
+    Route::resource('reservas', ReservaController::class);
+    Route::resource('estadias', EstadiaController::class);
+    Route::get('/grafico-ocupacao', [GraficoController::class, 'ocupacao'])->name('grafico.ocupacao');
 
-
-    
 });
 
 require __DIR__.'/auth.php';

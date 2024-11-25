@@ -11,11 +11,12 @@ class Reserva extends Model
 
     protected $fillable = ['hospede_id', 'data_inicio', 'data_fim'];
 
-    // Relacionamento com Hospede
     public function hospede()
     {
         return $this->belongsTo(Hospede::class);
     }
+    public function estadias()
+    {
+        return $this->hasMany(Estadia::class);
+    }
 }
-
-
